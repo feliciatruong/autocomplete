@@ -66,7 +66,7 @@ var AutocompleteApp = React.createClass({
       React.createElement(
         'h3',
         null,
-        'City Search'
+        'Autocomplete'
       ),
       React.createElement('input', {
         placeholder: 'Search cities...',
