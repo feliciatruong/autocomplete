@@ -54,7 +54,12 @@ var AutocompleteApp = React.createClass({
     /* Update state */
     this.setState({ text: text, items: items, results: results });
   },
+  /* search field selected automatically */
+  componentDidMount: function componentDidMount() {
+    this._input.focus();
+  },
   render: function render() {
+    var _this = this;
     return React.createElement(
       'div',
       null,
@@ -63,9 +68,13 @@ var AutocompleteApp = React.createClass({
         null,
         'City Search'
       ),
-      React.createElement('input', { placeholder: 'Search cities...',
+      React.createElement('input', {
+        placeholder: 'Search cities...',
         onChange: this.onChange,
-        value: this.state.text }),
+        value: this.state.text,
+        ref: function ref(c) {
+          return _this._input = c;
+        }}),
       React.createElement(
         'p',
         null,
