@@ -49,7 +49,7 @@ var AutocompleteApp = React.createClass({
           items.push([cities[i]]);
         }
       }
-      results = items.length + " result(s) found"
+      results = items.length + " result(s)"
     }
     /* Update state */
     this.setState({ text: text, items: items, results: results });
@@ -61,26 +61,41 @@ var AutocompleteApp = React.createClass({
   render: function render() {
     var _this = this;
     return React.createElement(
-      'div',
-      null,
+      "div",
+      { className: "search-page row" },
+
       React.createElement(
-        'h3',
-        null,
-        'Autocomplete'
-      ),
-      React.createElement('input', {
-        placeholder: 'Search cities...',
-        onChange: this.onChange,
-        value: this.state.text,
-        ref: function ref(c) {
-          return _this._input = c;
-        }}),
-      React.createElement(
-        'p',
-        null,
-        this.state.results
-      ),
-      React.createElement(FoundList, { items: this.state.items })
+        "div",
+        { className: "search-form form-group col-lg-offset-4 col-lg-4" },
+        React.createElement(
+          "h3",
+          { className: "header" },
+          "Autocomplete"
+        ),
+        React.createElement(
+          "div",
+          { className: "input-group" },
+          React.createElement("input", { className: "form-control", placeholder: "Search cities...", onChange: this.onChange, value: this.state.text,
+            ref: function ref(c) {
+              return _this._input = c;
+            } }),
+          React.createElement(
+            "span",
+            { className: "input-group-btn" },
+            React.createElement(
+              "button",
+              { className: "btn", type: "button" },
+              React.createElement("span", { className: "glyphicon glyphicon-search" })
+            )
+          )
+        ),
+        React.createElement(
+          "p",
+          null,
+          this.state.results
+        ),
+        React.createElement(FoundList, { items: this.state.items })
+      )
     );
   }
 });
