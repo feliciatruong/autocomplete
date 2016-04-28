@@ -43,7 +43,12 @@ var AutocompleteApp = React.createClass({
           found.push([cities[i]]);
         }
       }
-      results = found.length + " result(s)"
+      if (found.length == 0) {
+        results = "No results found"
+      }
+      else {
+        results = found.length + " result(s)"
+      }
     }
     this.setState({ text: text, found: found, results: results });
   },

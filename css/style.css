@@ -4,6 +4,10 @@ ul {
   text-transform: capitalize;
 }
 
+p {
+  padding-top: 5px;
+}
+
 .search-page {
   height: 100vh !important;
   width: 100vw !important;
