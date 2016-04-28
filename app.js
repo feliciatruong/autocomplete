@@ -52,7 +52,7 @@ var AutocompleteApp = React.createClass({
       results = items.length + " result(s) found"
     }
     /* Update state */
-    this.setState({ text: text, items: items });
+    this.setState({ text: text, items: items, results: results });
   },
   render: function render() {
     return React.createElement(
