@@ -28,19 +28,28 @@ var AutocompleteApp = React.createClass({
   getInitialState: function getInitialState() {
     return {
       items: [],
-      text: ''
+      text: '',
+      results: "Enter at least 3 characters to begin searching"
     };
   },
   /* Capture key press from text input */
   onChange: function onChange(e) {
     var items = [];
     var text = e.target.value;
+    var results;
 
+    /* Remind user to enter at least 3 characters */
+    if (text.length < 3) {
+      results = "Enter at least 3 characters to begin searching";
+    }
     /*  Returns matching city list */
-    for (var i = 0; i < cities.length; i++) {
-      if (cities[i].search(e.target.value) == 0 && text.length > 2) {
-        items.push([cities[i]]);
+    else {
+      for (var i = 0; i < cities.length; i++) {
+        if (cities[i].search(text) == 0) {
+          items.push([cities[i]]);
+        }
       }
+      results = items.length + " result(s) found"
     }
     /* Update state */
     this.setState({ text: text, items: items });
